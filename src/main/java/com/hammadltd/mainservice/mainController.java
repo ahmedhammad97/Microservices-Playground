@@ -9,8 +9,8 @@ public class mainController {
     @RequestMapping("/")
     public String homePage() {
         String[] responseArray = new String[] {
-                "Hey there!",
-                "We offer few endpoints to send us your data",
+                "Hey there! ",
+                "Try this endpoint: ",
                 "",
                 "POST /info",
         };

@@ -10,6 +10,20 @@ public class InfoController {
 
     @RequestMapping(value ="/info", method = RequestMethod.POST)
     public String sayHi(@RequestBody Info info) {
-        return "SAMO 3ALEEKO!";
+        info.setUniqueId();
+        String hash = info.getSecretData();
+
+        boolean fileUploadStatus = uploadInfoToS3(info);
+        boolean messagePushStatus = pushHashToQueue(info.getId(), hash);
+
+        return fileUploadStatus && messagePushStatus ? "Success" : "Fail";
+    }
+
+    private boolean uploadInfoToS3(Info info) {
+        return true;
+    }
+
+    private boolean pushHashToQueue(String id, String hash) {
+        return true;
     }
 }
