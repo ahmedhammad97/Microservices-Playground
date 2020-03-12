@@ -1,11 +1,14 @@
 package com.hammadltd.mainservice;
 
+import org.springframework.stereotype.Service;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 import java.util.UUID;
 
+@Service
 public class Info {
     private String name;
     private int age;
@@ -29,10 +32,9 @@ public class Info {
         return this.id;
     }
 
-    public String getSecretData() {
+    public String getSecretData(String key) {
         try
         {
-            String key = "McQeThWmZq4t7w!z";
             String initVector = "encryptionIntVec";
             IvParameterSpec iv = new IvParameterSpec(initVector.getBytes("UTF-8"));
             SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
@@ -43,7 +45,8 @@ public class Info {
         }
         catch (Exception e)
         {
-            System.out.println("Error while encrypting: " + e.toString());
+            e.printStackTrace();
+            System.out.println("Error while generating secret data: " + e.toString());
         }
         return null;
     }
