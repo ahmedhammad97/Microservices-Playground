@@ -14,6 +14,6 @@ public class mainController {
                 "",
                 "POST /info",
         };
-        return String.join("\n", responseArray);
+        return String.join(" \n ", responseArray);
     }
 }
