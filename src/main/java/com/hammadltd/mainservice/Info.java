@@ -52,4 +52,8 @@ public class Info {
     }
 
     public String getName() { return this.name; }
+
+    public int getAge() { return this.age; }
+
+    public String getDescription() { return this.description; }
 }

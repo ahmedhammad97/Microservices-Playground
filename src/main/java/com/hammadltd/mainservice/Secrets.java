@@ -9,6 +9,25 @@ import org.springframework.stereotype.Component;
 @PropertySource("classpath:secrets.properties")
 public class Secrets {
     private String encryptionKey;
+    private String bucketName;
+    private String queueName;
+
+
+    public String getQueueName() {
+        return queueName;
+    }
+
+    public void setQueueName(String queueName) {
+        this.queueName = queueName;
+    }
+
+    public String getBucketName() {
+        return bucketName;
+    }
+
+    public void setBucketName(String bucketName) {
+        this.bucketName = bucketName;
+    }
 
     public String getEncryptionKey() {
         return encryptionKey;
