@@ -1,6 +1,6 @@
-package com.hammadltd.mainservice;
+package com.hammadltd.mainservice.models;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -8,7 +8,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 import java.util.UUID;
 
-@Service
+@Component
 public class Info {
     private String name;
     private int age;

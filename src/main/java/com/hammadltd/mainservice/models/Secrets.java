@@ -1,13 +1,15 @@
-package com.hammadltd.mainservice;
+package com.hammadltd.mainservice.models;
 
+import com.hammadltd.mainservice.interfaces.ISecrets;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+
 @Component
 @ConfigurationProperties(prefix = "secrets")
 @PropertySource("classpath:secrets.properties")
-public class Secrets {
+public class Secrets implements ISecrets {
     private String encryptionKey;
     private String bucketName;
     private String queueName;
