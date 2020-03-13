@@ -77,7 +77,8 @@ public class InfoController {
     private boolean uploadInfoToS3(String path, String fileName) {
         String bucket_name = secrets.getBucketName();
         System.out.format("Uploading %s to S3 bucket %s...\n", path, bucket_name);
-        final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2).build();
+        final AmazonS3 s3 = AmazonS3ClientBuilder.standard()
+                .withRegion(Regions.US_EAST_2).build();
         try {
             s3.putObject(bucket_name, fileName, new File(path));
             System.out.println("Uploaded Successfully");
@@ -93,7 +94,8 @@ public class InfoController {
         System.out.println("Pushing message to AWS SQS");
         try {
             String queueName = secrets.getQueueName();
-            final AmazonSQS sqs = AmazonSQSClientBuilder.standard().withRegion(Regions.US_EAST_2).build();
+            final AmazonSQS sqs = AmazonSQSClientBuilder.standard()
+                    .withRegion(Regions.US_EAST_2).build();
             String queueUrl = sqs.getQueueUrl(queueName).getQueueUrl();
 
             SendMessageRequest send_msg_request = new SendMessageRequest()
@@ -111,10 +113,11 @@ public class InfoController {
     }
 
     private void deleteFilePath(String path) {
-        System.out.println("Deleting info file");
+        Path parentDir = Paths.get(path).getParent();
+        System.out.println("Deleting info directory: " + parentDir);
         try {
-            System.out.println(Paths.get(path).getParent());
             Files.delete(Paths.get(path));
+            Files.delete(parentDir);
             System.out.println("Deleted Successfully");
         }
         catch (IOException e) {
