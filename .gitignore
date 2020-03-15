@@ -1,4 +1,5 @@
-secrets.properties
+/mainService/src/main/resources/secrets.properties
+/configService/src/main/resources/secrets.properties
 
 HELP.md
 target/
