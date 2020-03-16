@@ -1,8 +1,9 @@
 package com.hammadltd.configservice.interfaces;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public interface IConfigs {
-    String getConfig1();
-    String getConfig2();
-    String getConfig3();
-    String getConfig4();
+    String getConfig(String configName);
+    boolean hasConfig(String config);
 }

@@ -5,6 +5,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+
 @Component
 @ConfigurationProperties(prefix = "configs")
 @PropertySource("classpath:configs.properties")
@@ -13,6 +15,8 @@ public class Configs implements IConfigs {
     private String config2;
     private String config3;
     private String config4;
+
+    private HashMap<String, String> configsMap;
 
     public String getConfig1() {
         return config1;
@@ -46,4 +50,22 @@ public class Configs implements IConfigs {
         this.config4 = config4;
     }
 
+    @Override
+    public boolean hasConfig(String config) {
+        return this.configsMap.containsKey(config);
+    }
+
+    private void updateConfigsMap() {
+        this.configsMap = new HashMap<String, String>() {{
+            put("config1", getConfig1());
+            put("config2", getConfig2());
+            put("config3", getConfig3());
+            put("config4", getConfig4());
+        }};
+    }
+
+    public String getConfig(String configName) {
+        this.updateConfigsMap();
+        return this.configsMap.get(configName);
+    }
 }

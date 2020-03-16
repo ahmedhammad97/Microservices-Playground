@@ -13,6 +13,15 @@ public class ConfigsFetcher implements IConfigFetcher {
     public ConfigsFetcher(IConfigs configs) { this.configs = configs; }
 
     public HashMap<String, String> fetch(String[] neededConfigs) {
-        return new HashMap<String, String>();
+        HashMap<String, String> fetchedConfigs = new HashMap<>();
+        for (String config : neededConfigs) {
+            if (configs.hasConfig(config)) {
+                fetchedConfigs.put(config, configs.getConfig(config));
+            }
+            else {
+                fetchedConfigs.put(config, null);
+            }
+        }
+        return fetchedConfigs;
     }
 }
