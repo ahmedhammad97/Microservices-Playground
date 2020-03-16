@@ -52,6 +52,7 @@ public class Configs implements IConfigs {
 
     @Override
     public boolean hasConfig(String config) {
+        this.updateConfigsMap();
         return this.configsMap.containsKey(config);
     }
 
