@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package com.hammadltd.configservice.grpc;
+
+message stringArray {
+    repeated string config = 1;
+}
+
+message configRequest {
+    stringArray neededConfigs = 1;
+    string secretKey = 2;
+}
+
+message configResponse {
+    string message = 1;
+    int32 responseCode = 2;
+}
+
+service ConfigService {
+    rpc GetConfigs (configRequest) returns (configResponse);
+}
