@@ -2,12 +2,8 @@ syntax = "proto3";
 
 package com.hammadltd.configservice.grpc;
 
-message stringArray {
-    repeated string config = 1;
-}
-
 message configRequest {
-    stringArray neededConfigs = 1;
+    repeated string neededConfigs = 1;
     string secretKey = 2;
 }
 
