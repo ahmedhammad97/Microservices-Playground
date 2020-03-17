@@ -6,8 +6,6 @@ import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.IOException;
-
 @SpringBootApplication
 public class App {
 
@@ -19,8 +17,9 @@ public class App {
                     .addService(new ConfigController()).build();
             server.start();
             System.out.println("RPC server listening on port " + server.getPort());
+            server.awaitTermination();
         }
-        catch (IOException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
