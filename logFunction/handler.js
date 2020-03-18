@@ -1,11 +1,17 @@
 'use strict';
+const decryption = require("./decryption");
 
 module.exports.logSQSMsgs = async event => {
   // Get configs
   // Print configs
-  // Loop over messages *
-  // Decode message
-  // print decoded message
+
+  for (record of records) {
+    let id = record.body.split(" ")[0];
+    let encodedMsg = record.body.split(" ")[1];
+    let log = {"id": id, "message": decryption(encodedMsg)}
+    console.log(log);
+  }
+
   return {
     statusCode: 200,
     body: JSON.stringify(
@@ -18,6 +24,4 @@ module.exports.logSQSMsgs = async event => {
     ),
   };
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
