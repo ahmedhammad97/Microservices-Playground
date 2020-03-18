@@ -33,7 +33,7 @@ functions:
   logSQSMsgs:
     handler: handler.logSQSMsgs
     events:
-     - sqs: arn:aws:sqs:us-east-2:370198596560:superproj97
+      - sqs: arn:aws:sqs:us-east-2:370198596560:superproj97
 
       - http:
           path: /
