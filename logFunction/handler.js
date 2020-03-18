@@ -1,7 +1,11 @@
 'use strict';
 
 module.exports.logSQSMsgs = async event => {
-  console.log("Hooraaay!");
+  // Get configs
+  // Print configs
+  // Loop over messages *
+  // Decode message
+  // print decoded message
   return {
     statusCode: 200,
     body: JSON.stringify(

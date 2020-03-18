@@ -3,8 +3,8 @@ service: logfunction
 provider:
   name: aws
   runtime: nodejs12.x
-
-region: us-east-2
+  region: us-east-2
+  stage: dev
 
 iamRoleStatements:
   - Effect: "Allow"
@@ -33,11 +33,13 @@ functions:
   logSQSMsgs:
     handler: handler.logSQSMsgs
     events:
-      - sqs: arn:aws:sqs:us-east-2:370198596560:superproj97
+      - sqs:
+          arn: arn:aws:sqs:us-east-2:370198596560:superproj97
+          batchSize: 1
 
-      - http:
-          path: /
-          method: get
+#     - http:
+#         path: /
+#         method: get
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
@@ -72,12 +74,12 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-resources:
-  Resources:
-    MyQueue:
-      Type: "AWS::SQS::Queue"
-      Properties:
-        QueueName: "superproj97"
+# resources:
+#   Resources:
+#     MyQueue:
+#       Type: "AWS::SQS::Queue"
+#       Properties:
+#         QueueName: "superproj97"
 
 #  Outputs:
 #     NewOutput:
