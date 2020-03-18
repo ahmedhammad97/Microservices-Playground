@@ -32,10 +32,9 @@ public class Info {
         return this.id;
     }
 
-    public String getSecretData(String key) {
+    public String getSecretData(String key, String initVector) {
         try
         {
-            String initVector = "encryptionIntVec";
             IvParameterSpec iv = new IvParameterSpec(initVector.getBytes("UTF-8"));
             SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");

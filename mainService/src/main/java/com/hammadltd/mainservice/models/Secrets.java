@@ -13,6 +13,7 @@ public class Secrets implements ISecrets {
     private String encryptionKey;
     private String bucketName;
     private String queueName;
+    private String iv;
 
 
     public String getQueueName() {
@@ -38,6 +39,10 @@ public class Secrets implements ISecrets {
     public void setEncryptionKey(String encryptionKey) {
         this.encryptionKey = encryptionKey;
     }
+
+    public String getIv() { return iv; }
+
+    public void setIv(String iv) { this.iv = iv; }
 
     public Secrets() { }
 }

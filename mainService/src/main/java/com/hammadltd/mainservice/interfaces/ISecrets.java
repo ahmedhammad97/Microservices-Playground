@@ -7,4 +7,5 @@ public interface ISecrets {
     String getQueueName();
     String getBucketName();
     String getEncryptionKey();
+    String getIv();
 }

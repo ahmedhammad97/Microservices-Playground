@@ -32,7 +32,7 @@ public class InfoController {
     @RequestMapping(value ="/info", method = RequestMethod.POST)
     public String infoProcessor(@RequestBody Info info) {
         info.setUniqueId();
-        String hash = info.getSecretData(this.secrets.getEncryptionKey());
+        String hash = info.getSecretData(this.secrets.getEncryptionKey(), secrets.getIv());
 
         String filePath = fileHandler.writeToFile(info);
 
